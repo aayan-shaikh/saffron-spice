@@ -11,7 +11,10 @@ const nav_links = [
     { name: "Contact", href: "/contact" },
 ];
 
-const { title, description = "Kolibri Demo 1" } = Astro.props;
+const {
+    title = "🌶️🦜 Saffron Spice | Kolibri Web Designs Demo 1 | Kolibriwebdesigns.com",
+    description = "Saffron Spirce, sample restatraunt website template by Kolibri Web Designs, Demo 1 | Kolibriwebdesigns.com | Portfolio",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -20,17 +23,13 @@ const { title, description = "Kolibri Demo 1" } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
             rel="stylesheet"
         />
-
-        <!-- GSAP -->
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
-        ></script>
         <title>{title}</title>
     </head>
     <body>
