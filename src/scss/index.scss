@@ -1,3 +1,35 @@
 @use 'variables/' as *;
 @use 'base/' as *;
 @use 'components/' as *;
+
+.madeby {
+    color: white;
+
+    a {
+        color: inherit;
+    }
+
+    user-select: none;
+    mix-blend-mode:luminosity;
+
+    z-index: 1;
+    text-transform: capitalize;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    padding: 0.5rem 1rem;
+    background: rgba($color: grey, $alpha: 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    outline: 1px solid rgba($color: grey, $alpha: 0.2);
+
+    @media (max-width: 1024px) {
+        left: 50%;
+        right: auto;
+        width: max-content;
+        /* Important: Override the default 'right' property */
+        transform: translateX(-50%);
+
+    }
+
+}
