@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../scss/pages/_home.scss";
+---
+
+<BaseLayout>
+  <div class="background">
+    <div id="home-container">
+      <div id="hero">
+        <img
+          class="hero-img"
+          src="https://images.pexels.com/photos/2679501/pexels-photo-2679501.jpeg"
+          alt="indian food"
+        />
+        <div class="hero-content">
+          <h1 class="headline">
+            Experience the Soul of Pune, One Dish at a Time.
+          </h1>
+          <p class="subheading">
+            Saffron Spice Pune brings you a modern take on authentic
+            Maharashtrian and Indian cuisine, crafted with locally sourced
+            ingredients and a passion for flavor.
+          </p>
+          <div class="hero-buttons">
+            <a href="/contact"><button class="btn-primary">Order Now</button></a
+            >
+            <a
+              href="https://b.zmtcdn.com/data/menus/522/6503522/af16d07e5ed9053fb983c89e7cf0b5ad.jpg?output-format=webp"
+              ><button class="btn-secondary">View our menu</button></a
+            >
+          </div>
+        </div>
+      </div>
+      <div id="intro-section">
+        <h2 class="intro__headline">Where Tradition Meets Taste</h2>
+        <p class="intro__body-text">
+          Nestled in the vibrant lanes of Pune, Saffron Spice is more than just
+          a restaurant—it's a celebration of India's rich culinary heritage. We
+          honor timeless recipes passed down through generations while infusing
+          them with a fresh, contemporary spirit. Join us for a dining
+          experience that is both familiar and surprisingly new.
+        </p>
+      </div>
+      <div id="featured-dishes">
+        <h2 class="headline">Our Signature Creations</h2>
+        <ul class="cards">
+          <li class="card">
+            <h3 class="card__title">The Peshwai Thali</h3>
+            <img
+              class="card__img"
+              src="https://images.pexels.com/photos/8818667/pexels-photo-8818667.jpeg"
+              alt="indian food"
+            />
+            <p class="card__description">
+              A royal platter fit for kings. Featuring a curated selection of
+              our finest vegetable curries, dal, fluffy chapatis, fragrant rice,
+              and traditional sweets. A true taste of Maharashtra's grandeur.
+            </p>
+            <button class="btn-primary">Order Now</button>
+          </li>
+          <li class="card">
+            <h3 class="card__title">Modern Misal Pav</h3>
+            <img
+              class="card__img"
+              src="https://images.pexels.com/photos/17223828/pexels-photo-17223828.jpeg"
+              alt="indian food"
+            />
+            <p class="card__description">
+              Our contemporary twist on Pune's favorite street food. A perfectly
+              spiced moth bean curry topped with crunchy farsan, fresh onions,
+              and a hint of lime, served with butter-toasted pav.
+            </p>
+            <button class="btn-primary">Order Now</button>
+          </li>
+          <li class="card">
+            <h3 class="card__title">Saffron Infused Kulfi</h3>
+            <img
+              class="card__img"
+              src="https://images.pexels.com/photos/29699512/pexels-photo-29699512.jpeg"
+              alt="indian food"
+            />
+            <p class="card__description">
+              A creamy, dreamy dessert to complete your meal. Our homemade kulfi
+              is slow-churned and infused with the finest saffron strands and
+              crushed pistachios for a rich, aromatic finish.
+            </p>
+            <button class="btn-primary">Order Now</button>
+          </li>
+        </ul>
+      </div>
+      <div id="testimonials">
+        <h3 class="headline">What Our Guests Are Saying</h3>
+        <div class="testimonial">
+          <blockquote>
+            "An absolutely unforgettable meal! The ambiance is beautiful and the
+            food is divine. The Modern Misal Pav is a must-try. We will
+            definitely be back!"
+          </blockquote>
+          <p class="author">— Priya R., Pune</p>
+        </div>
+        <div class="testimonial">
+          <blockquote>
+            "Saffron Spice is a gem. It's the perfect place for a family dinner.
+            The staff is incredibly welcoming and the Peshwai Thali was
+            authentic and delicious."
+          </blockquote>
+          <p class="author">— Amol M., Pune</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

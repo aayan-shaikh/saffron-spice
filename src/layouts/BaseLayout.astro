@@ -1,0 +1,186 @@
+---
+export interface Props {
+    title?: string;
+    description?: string;
+}
+import "../scss/index.scss";
+
+const nav_links = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+];
+
+const { title, description = "Kolibri Demo 1" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- GSAP -->
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
+        ></script>
+        <title>{title}</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar" id="navbar">
+            <div class="navbar__container">
+                <a href="/" class="navbar__logo">
+                    <span class="navbar__logo-icon">🌶️</span>
+                    Saffron Spice
+                </a>
+
+                <ul class="navbar__menu" id="navMenu">
+                    {
+                        nav_links.map((link) => {
+                            return (
+                                <li>
+                                    <a
+                                        class="navbar__menu-link"
+                                        href={link.href}
+                                    >
+                                        {link.name}
+                                    </a>
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+
+                <div class="navbar__cta">
+                    <a href="/contact" class="nav-btn">Order</a>
+                </div>
+
+                <button class="navbar__hamburger" id="hamburger">
+                    <span class="navbar__hamburger-line"></span>
+                    <span class="navbar__hamburger-line"></span>
+                    <span class="navbar__hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div id="overlay"></div>
+
+        <!-- Main Content -->
+        <main>
+            <slot />
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__column">
+                    <h3>About Us</h3>
+                    <p>
+                        Building amazing food experiences with modern tools and
+                        technologies.
+                    </p>
+                    <!-- CTA Button -->
+                    <a href="/about" class="btn-cta">Learn More</a>
+                </div>
+                <div class="footer__column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        {
+                            nav_links.map((link) => {
+                                return (
+                                    <li>
+                                        <a class="" href={link.href}>
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="/contact">Dine In</a></li>
+                        <li><a href="/contact">Delivery</a></li>
+                        <li><a href="/contact">Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>
+                            <a href="mailto:hello@example.com"
+                                >hello@example.com</a
+                            >
+                        </li>
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                    </ul>
+                    <!-- Social Links -->
+                    <div class="footer__social">
+                        <a
+                            href="https://twitter.com"
+                            target="_blank"
+                            aria-label="Twitter"
+                        >
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a
+                            href="https://facebook.com"
+                            target="_blank"
+                            aria-label="Facebook"
+                        >
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a
+                            href="https://linkedin.com"
+                            target="_blank"
+                            aria-label="LinkedIn"
+                        >
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Navbar functionality
+            const navbar = document.getElementById("navbar");
+            const hamburger = document.getElementById("hamburger");
+            const navMenu = document.getElementById("navMenu");
+            const overlay = document.getElementById("overlay");
+
+            // Mobile menu toggle
+            hamburger?.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+                overlay.classList.toggle("active");
+            });
+
+            // Close menu when overlay is clicked
+            overlay?.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navMenu.classList.remove("active");
+                overlay.classList.remove("active");
+            });
+
+            // Scroll effect
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            });
+        </script>
+    </body>
+</html>

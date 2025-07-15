@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../scss/pages/_contact.scss";
+---
+
+<BaseLayout>
+    <div id="contact-container">
+        <section class="intro">
+            <h1>Ready for a Flavorful Experience?</h1>
+            <p>
+                Place your order for pickup or get in touch for reservations. We
+                look forward to serving you!
+            </p>
+            <button>
+                <a href="tel:+911234567890">Call to order</a>
+            </button>
+        </section>
+        <section class="time">
+            <h2>Our Hours</h2>
+            <h3>Lunch</h3>
+            <p>12:00 PM – 3:00 PM (Daily)</p>
+            <h3>Dinner</h3>
+            <p>7:00 PM – 11:00 PM (Daily)</p>
+        </section>
+        <section class="visit">
+            <h2>Visit Us</h2>
+            <p>
+                Saffron Spice Pune 123, Deccan Gymkhana, Pune, Maharashtra
+                411004
+            </p>
+
+            <iframe
+                id="directions-map-iframe"
+                class="map"
+                width="600"
+                height="450"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                src="about:blank"
+                title="Directions to Saffron Spice"></iframe>
+        </section>
+
+        <section class="form">
+            <h2>Special requests</h2>
+            <form netlify>
+                <input type="text" placeholder="Enter your name" />
+                <input type="number" placeholder="Eg. 9021111482" />
+                <input
+                    type="email"
+                    placeholder="eg. kolibriwebdesigns@gmail.com"
+                />
+                <textarea
+                    name="Message"
+                    id="message"
+                    rows="10"
+                    placeholder="Enter your query, we promise to get back within 6 hours"
+                ></textarea>
+                <button
+                    type="submit"
+                    onclick="alert('Thank you for viewing our Kolibri Web Designs Demo!')"
+                >
+                    Place Request
+                </button>
+            </form>
+        </section>
+    </div>
+</BaseLayout>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const mapIframe = document.getElementById("directions-map-iframe");
+        if (!mapIframe) {
+            console.error("Map iframe element not found!");
+            return;
+        }
+
+        // Define your destination (Saffron Spice Pune)
+        // You can use place_id or coordinates here.
+        // Using "Deccan Gymkhana, Pune" as text for destination.
+        // For precise place_id, you'd use a Google Maps Geocoding API lookup.
+        const destination = "Deccan Gymkhana, Pune";
+        const apiKey = "AIzaSyAOl5QxvygrO8AtpeqREZtZv6zUPotsPKw"; // Replace with your actual API key
+
+        // Check if Geolocation is supported by the browser
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    // Success callback
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const origin = `${latitude},${longitude}`; // Format for the URL
+
+                    // Construct the directions URL with dynamic origin
+                    const directionsUrl = `https://www.google.com/maps/embed/v1/directions?origin=${origin}&destination=${encodeURIComponent(destination)}&key=${apiKey}`;
+
+                    mapIframe.src = directionsUrl;
+                },
+                (error) => {
+                    // Error callback (user denied location, or other error)
+                    console.error("Error getting user location:", error);
+                    // Fallback: If user denies location or error occurs,
+                    // set origin to "current location" which Google Maps embed API *might* interpret
+                    // or just use your restaurant as origin or a generic "My Location"
+                    const fallbackDirectionsUrl = `https://www.google.com/maps/embed/v1/directions?origin=Current+Location&destination=${encodeURIComponent(destination)}&key=${apiKey}`;
+                    mapIframe.src = fallbackDirectionsUrl;
+
+                    // Optionally, inform the user:
+                    // alert("Could not get your current location. Please allow location access to see directions from your exact spot.");
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0,
+                },
+            );
+        } else {
+            // Geolocation is not supported by this browser
+            console.warn("Geolocation is not supported by this browser.");
+            // Fallback for unsupported browsers
+            const fallbackDirectionsUrl = `https://www.google.com/maps/embed/v1/directions?origin=Current+Location&destination=${encodeURIComponent(destination)}&key=${apiKey}`;
+            mapIframe.src = fallbackDirectionsUrl;
+        }
+    });
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "saffron-spice",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro build & astro preview --host"
+  },
+  "dependencies": {
+    "astro": "^5.9.1",
+    "sass": "^1.89.1"
+  },
+  "devDependencies": {
+  "@types/bun": "latest"
+},
+"private": true,
+"peerDependencies": {
+  "typescript": "^5"
+}
+}
