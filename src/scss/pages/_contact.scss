@@ -11,6 +11,11 @@
     gap: 3rem;
     color: $text-primary;
     background: radial-gradient($secondary, $accent);
+
+    @media (min-width:1024px) {
+        padding: 12rem 24rem;
+        margin: auto;
+    }
 }
 
 #contact-container a {
